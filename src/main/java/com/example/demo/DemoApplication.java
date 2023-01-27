@@ -1,13 +1,14 @@
-package com.mySpace.Apiclientes;
+package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiclientesApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiclientesApplication.class, args);
+		System.out.println("fer");
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }
