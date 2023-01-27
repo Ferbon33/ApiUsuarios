@@ -1,13 +1,14 @@
-package com.misTrabajos.clientes;
+package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ClientesApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ClientesApplication.class, args);
+		System.out.println("fer");
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }
