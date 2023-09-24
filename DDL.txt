@@ -1,0 +1,30 @@
+---------------------DB
+CREATE DATABASE `usuarios` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+--------------------TABLE
+-- usuarios.user definition
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(8) NOT NULL,
+  `UUID` varchar(50) DEFAULT NULL,
+  `token` varchar(100) DEFAULT NULL,
+  `last_login` timestamp NULL DEFAULT NULL,
+  `created` timestamp NULL DEFAULT NULL,
+  `modified` timestamp NULL DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- usuarios.phones definition
+
+CREATE TABLE `phones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(100) NOT NULL,
+  `number` varchar(20) DEFAULT NULL,
+  `citycode` varchar(8) DEFAULT NULL,
+  `contrycode` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
