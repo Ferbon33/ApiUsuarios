@@ -89,10 +89,7 @@ public class UserService {
 
 
         LocalDateTime dateTime = LocalDateTime.now();
-        int ok =   this.userRepository.UpdateUser(request.getName(),request.getEmail(),request.getPassword(),id,dateTime);
-        System.out.println("salida fer" + ok);
-
-
+        this.userRepository.UpdateUser(request.getName(),request.getEmail(),request.getPassword(),id,dateTime);
         return request;
     }
 
