@@ -9,10 +9,15 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/usuarios
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      SPRING_REDIS_HOST: redis  # <-- agregado para que Spring sepa dónde está Redis
-      SPRING_REDIS_PORT: 6379   # <-- puerto por defecto de Redis
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+
+      # Si tu app usa MongoDB, agregá las siguientes variables:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/usuariosdb
     depends_on:
       - db
+      - redis
+      - mongo
 
   db:
     image: mysql:8
@@ -22,10 +27,17 @@ services:
       MYSQL_DATABASE: usuarios
     ports:
       - "3306:3306"
+
   redis:
     image: redis:7
     restart: always
     ports:
       - "6379:6379"
 
-
+  mongo:
+    image: mongo:6
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: usuariosdb
