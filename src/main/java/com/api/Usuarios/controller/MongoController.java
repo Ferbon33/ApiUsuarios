@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/mongodb/usuarios")
-public class UsuarioController {
+public class MongoController {
 
     @Autowired
     private UsuarioService usuarioService;

@@ -2,7 +2,6 @@ package com.api.Usuarios.controller;
 
 import com.api.Usuarios.Dto.BaseDTO;
 import com.api.Usuarios.Dto.ErrorResponseDTO;
-import com.api.Usuarios.Dto.SucessResponseDTO;
 import com.api.Usuarios.Dto.UsuarioDTO;
 import com.api.Usuarios.models.UserModel;
 import com.api.Usuarios.service.CheckMailService;
@@ -16,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class MysqlController {
 
     @Autowired
     private UserService userService;
