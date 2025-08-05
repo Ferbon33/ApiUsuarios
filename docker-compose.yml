@@ -9,15 +9,20 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/usuarios
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+
       SPRING_REDIS_HOST: redis
       SPRING_REDIS_PORT: 6379
 
-      # Si tu app usa MongoDB, agregá las siguientes variables:
       SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/usuariosdb
+
+      # Kafka connection
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+
     depends_on:
       - db
       - redis
       - mongo
+      - kafka
 
   db:
     image: mysql:8
@@ -41,3 +46,23 @@ services:
       - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: usuariosdb
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.2.1
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    restart: always
+
+  kafka:
+    image: confluentinc/cp-kafka:7.2.1
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    restart: always
