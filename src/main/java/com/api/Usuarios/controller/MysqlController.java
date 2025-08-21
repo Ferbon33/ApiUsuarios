@@ -10,9 +10,11 @@ import com.api.Usuarios.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/user")
 public class MysqlController {
@@ -68,6 +70,19 @@ public class MysqlController {
             return "Error, we have a problem " + id;
         }
     }
-
+    @GetMapping("/json-test")
+    public UserModel testUser() {
+        UserModel user = new UserModel();
+        user.setName("fernando");
+        user.setEmail("fernando@hotmail.com");
+        user.setPassword("1234");
+        user.setUuid("uuid");
+        user.setToken("token");
+        user.setCreated(LocalDateTime.now());
+        user.setModified(LocalDateTime.now());
+        user.setLast_login(LocalDateTime.now());
+        user.setActive(true);
+        return user;
+    }
 
 }
